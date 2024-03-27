@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iomc.baseModel.mapper.DataSourceMapper">
+
+    <resultMap id="BaseResultMap" type="cn.iomc.baseModel.entity.DataSource">
+            <id property="id" column="ID" jdbcType="BIGINT"/>
+            <result property="dsCode" column="DS_CODE" jdbcType="VARCHAR"/>
+            <result property="name" column="NAME" jdbcType="VARCHAR"/>
+            <result property="remark" column="REMARK" jdbcType="VARCHAR"/>
+            <result property="dbType" column="DB_TYPE" jdbcType="TINYINT"/>
+            <result property="dbDrive" column="DB_DRIVE" jdbcType="VARCHAR"/>
+            <result property="dbUrl" column="DB_URL" jdbcType="VARCHAR"/>
+            <result property="dbUsername" column="DB_USERNAME" jdbcType="VARCHAR"/>
+            <result property="dbPassword" column="DB_PASSWORD" jdbcType="VARCHAR"/>
+            <result property="delFlag" column="DEL_FLAG" jdbcType="TINYINT"/>
+            <result property="createUserId" column="CREATE_USER_ID" jdbcType="VARCHAR"/>
+            <result property="createUserName" column="CREATE_USER_NAME" jdbcType="VARCHAR"/>
+            <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP"/>
+            <result property="updateUserId" column="UPDATE_USER_ID" jdbcType="VARCHAR"/>
+            <result property="updateUserName" column="UPDATE_USER_NAME" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="UPDATE_TIME" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,DS_CODE,NAME,
+        REMARK,DB_TYPE,DB_DRIVE,
+        DB_URL,DB_USERNAME,DB_PASSWORD,
+        DEL_FLAG,CREATE_USER_ID,CREATE_USER_NAME,
+        CREATE_TIME,UPDATE_USER_ID,UPDATE_USER_NAME,
+        UPDATE_TIME
+    </sql>
+</mapper>
