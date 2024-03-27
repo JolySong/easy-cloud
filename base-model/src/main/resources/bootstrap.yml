@@ -1,0 +1,29 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: base-model
+  cloud:
+    nacos:
+      ipAddr: 10.0.0.10:8848
+      username: nacos
+      password: nacos
+      namespace: dev
+      discovery:
+        server-addr: ${spring.cloud.nacos.ipAddr}
+        namespace: ${spring.cloud.nacos.namespace}
+      config:
+        server-addr: ${spring.cloud.nacos.ipAddr}
+        extension-configs: [{ data-id: 'common-dev.yaml',group: 'DEFAULT_GROUP',refresh: true }
+                            ]
+        # 命名空间ID，不能跨命名空间调用配置，public默认命名空间id为空
+        namespace: ${spring.cloud.nacos.namespace}
+
+mybatis-plus: #mybatis配置
+  configuration:
+#    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+    call-setters-on-nulls: true
+  mapperLocations: classpath*:mybatis/*.xml,classpath*:mapper/*.xml

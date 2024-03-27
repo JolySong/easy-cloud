@@ -17,6 +17,7 @@
     <modules>
         <module>task-manager</module>
         <module>common</module>
+        <module>base-model</module>
     </modules>
 
 
@@ -39,8 +40,10 @@
         <jtds.version>1.3.1</jtds.version>
 
         <!-- other -->
-        <mybatisPlus.version>3.5.5</mybatisPlus.version>
+        <mybatisPlus.version>3.4.0</mybatisPlus.version>
         <fastjson.version>1.2.76</fastjson.version>
+        <log4j.version>1.7.30</log4j.version>
+        <hutool.version>5.8.11</hutool.version>
     </properties>
 
     <dependencyManagement>
@@ -71,6 +74,7 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
             </dependency>
 
             <!-- oracle -->
@@ -105,11 +109,28 @@
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatisPlus.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>${mybatisPlus.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-core</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
 
             <!-- other eng -->
