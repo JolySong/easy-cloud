@@ -2,7 +2,9 @@ package cn.iomc.common.constant;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -38,8 +40,17 @@ public class BasePO implements Serializable {
      * 创建时间
      */
     @TableField(value = "CREATE_TIME", fill = FieldFill.INSERT)
+    @Setter(AccessLevel.NONE)
     private Date createTime;
-
+    public Date getCreateTime() {
+        return null != updateTime ?
+                (Date) updateTime.clone() : null;
+    }
+    public void setCreateTime(Date updateTime) {
+        this.updateTime =
+                null != updateTime ?
+                        (Date)updateTime.clone() : null;
+    }
     /**
      * 最后修改人用户ID
      */
@@ -56,6 +67,15 @@ public class BasePO implements Serializable {
      * 最后修改时间
      */
     @TableField(value = "UPDATE_TIME", fill = FieldFill.UPDATE)
+    @Setter(AccessLevel.NONE)
     private Date updateTime;
-
+    public Date getUpdateTime() {
+        return null != updateTime ?
+                (Date) updateTime.clone() : null;
+    }
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime =
+                null != updateTime ?
+                        (Date)updateTime.clone() : null;
+    }
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iomc.common.mapper.ModelRuleNullMapper">
+
+    <resultMap id="BaseResultMap" type="cn.iomc.common.entity.ModelRuleNull">
+            <id property="id" column="ID" jdbcType="INTEGER"/>
+            <result property="ruleCode" column="RULE_CODE" jdbcType="BIGINT"/>
+            <result property="configCode" column="CONFIG_CODE" jdbcType="BIGINT"/>
+            <result property="ruleType" column="RULE_TYPE" jdbcType="TINYINT"/>
+            <result property="checkField" column="CHECK_FIELD" jdbcType="VARCHAR"/>
+            <result property="notNullState" column="NOT_NULL_STATE" jdbcType="TINYINT"/>
+            <result property="checkSpace" column="CHECK_SPACE" jdbcType="TINYINT"/>
+            <result property="delFlag" column="DEL_FLAG" jdbcType="TINYINT"/>
+            <result property="createUserId" column="CREATE_USER_ID" jdbcType="VARCHAR"/>
+            <result property="createUserName" column="CREATE_USER_NAME" jdbcType="VARCHAR"/>
+            <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP"/>
+            <result property="updateUserId" column="UPDATE_USER_ID" jdbcType="VARCHAR"/>
+            <result property="updateUserName" column="UPDATE_USER_NAME" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="UPDATE_TIME" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,RULE_CODE,CONFIG_CODE,
+        RULE_TYPE,CHECK_FIELD,NOT_NULL_STATE,
+        CHECK_SPACE,DEL_FLAG,CREATE_USER_ID,
+        CREATE_USER_NAME,CREATE_TIME,UPDATE_USER_ID,
+        UPDATE_USER_NAME,UPDATE_TIME
+    </sql>
+</mapper>

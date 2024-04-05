@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iomc.baseModel.mapper.ModelMapper">
+
+    <resultMap id="BaseResultMap" type="cn.iomc.baseModel.entity.ModelEntity">
+            <id property="id" column="ID" jdbcType="INTEGER"/>
+            <result property="configCode" column="CONFIG_CODE" jdbcType="VARCHAR"/>
+            <result property="mainConfigCode" column="MAIN_CONFIG_CODE" jdbcType="VARCHAR"/>
+            <result property="modelName" column="MODEL_NAME" jdbcType="VARCHAR"/>
+            <result property="versionNum" column="VERSION_NUM" jdbcType="VARCHAR"/>
+            <result property="releaseTime" column="RELEASE_TIME" jdbcType="TIMESTAMP"/>
+            <result property="state" column="STATE" jdbcType="TINYINT"/>
+            <result property="description" column="DESCRIPTION" jdbcType="VARCHAR"/>
+            <result property="publishDescription" column="PUBLISH_DESCRIPTION" jdbcType="VARCHAR"/>
+            <result property="publishPeople" column="PUBLISH_PEOPLE" jdbcType="VARCHAR"/>
+            <result property="sort" column="SORT" jdbcType="INTEGER"/>
+            <result property="delFlag" column="DEL_FLAG" jdbcType="TINYINT"/>
+            <result property="createUserId" column="CREATE_USER_ID" jdbcType="VARCHAR"/>
+            <result property="createUserName" column="CREATE_USER_NAME" jdbcType="VARCHAR"/>
+            <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP"/>
+            <result property="updateUserId" column="UPDATE_USER_ID" jdbcType="VARCHAR"/>
+            <result property="updateUserName" column="UPDATE_USER_NAME" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="UPDATE_TIME" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,CONFIG_CODE,MAIN_CONFIG_CODE,
+        MODEL_NAME,VERSION_NUM,RELEASE_TIME,
+        STATE,DESCRIPTION,PUBLISH_DESCRIPTION,
+        PUBLISH_PEOPLE,SORT,DEL_FLAG,
+        CREATE_USER_ID,CREATE_USER_NAME,CREATE_TIME,
+        UPDATE_USER_ID,UPDATE_USER_NAME,UPDATE_TIME
+    </sql>
+
+    <select id="queryModelCount" parameterType="long" resultType="int">
+        SELECT
+            COUNT(DISTINCT MAIN_CONFIG_CODE)
+        FROM t_model
+        <if test="mainConfigCode != null and mainConfigCode != ''">
+            WHERE  MAIN_CONFIG_CODE = #{mainConfigCode}
+        </if>
+
+    </select>
+</mapper>

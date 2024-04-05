@@ -1,7 +1,8 @@
+
 package cn.iomc.baseModel.service;
 
-import cn.iomc.baseModel.DTO.QueryDTO;
-import cn.iomc.baseModel.entity.DataSource;
+import cn.iomc.baseModel.dto.QueryDTO;
+import cn.iomc.common.entity.DataSourceEntity;
 import cn.iomc.common.result.Result;
 
 /**
@@ -14,27 +15,31 @@ public interface DataSourceService {
 
     /**
      * 添加数据源
-     * @param dataSource
+     *
+     * @param dataSourceEntity
      * @return
      */
-    Result addDatasource(DataSource dataSource);
+    Result addDatasource(DataSourceEntity dataSourceEntity);
 
     /**
      * 删除数据源
-     * @param dataSource
+     *
+     * @param dto
      * @return
      */
-    Result delDatasource(DataSource dataSource);
+    Result delDatasource(QueryDTO dto);
 
     /**
      * 修改数据源
-     * @param dataSource
+     *
+     * @param dataSourceEntity
      * @return
      */
-    Result updateDatasource(DataSource dataSource);
+    Result updateDatasource(DataSourceEntity dataSourceEntity);
 
     /**
-     * 查询数据源
+     * 分页查询数据源
+     *
      * @param query
      * @return
      */

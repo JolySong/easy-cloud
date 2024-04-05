@@ -14,7 +14,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 public class taskManageApplication {
     public static void main(String[] args) {
         SpringApplication.run(taskManageApplication.class, args);
-        System.out.println("taskManage starting...");
+        System.out.println("------------->>> taskManage starting...");
     }
 
 

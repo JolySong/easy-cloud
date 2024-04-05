@@ -1,4 +1,4 @@
-package cn.iomc.baseModel.DTO;
+package cn.iomc.baseModel.dto;
 
 import cn.iomc.common.constant.CommonQueryDTO;
 import lombok.Data;
@@ -18,4 +18,10 @@ public class QueryDTO extends CommonQueryDTO {
      * 数据库类型 0mysql 1oracle 2sqlserver
      */
     private Integer dbType;
+
+    /**
+     * 批量操作主键
+     */
+    private String codes;
+
 }

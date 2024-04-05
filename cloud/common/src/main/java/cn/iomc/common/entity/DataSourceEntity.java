@@ -1,4 +1,4 @@
-package cn.iomc.baseModel.entity;
+package cn.iomc.common.entity;
 
 import cn.iomc.common.constant.BasePO;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -16,7 +16,8 @@ import javax.validation.constraints.NotNull;
  */
 @TableName(value ="t_data_source")
 @Data
-public class DataSource extends BasePO {
+public class DataSourceEntity extends BasePO {
+
     /**
      * ID
      */
@@ -27,7 +28,7 @@ public class DataSource extends BasePO {
      * 数据源编码
      */
     @TableField(value = "DS_CODE")
-    private String dsCode;
+    private Long dsCode;
 
     /**
      * 数据源名称
@@ -59,26 +60,23 @@ public class DataSource extends BasePO {
      * 数据库URL
      */
     @TableField(value = "DB_URL")
+    @NotBlank(message = "数据库URL不能为空")
     private String dbUrl;
 
     /**
      * 用户名
      */
     @TableField(value = "DB_USERNAME")
+    @NotBlank(message = "用户名不能为空")
     private String dbUsername;
 
     /**
      * 密码
      */
     @TableField(value = "DB_PASSWORD")
+    @NotBlank(message = "密码不能为空")
     private String dbPassword;
 
-
-
-
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {
@@ -91,7 +89,7 @@ public class DataSource extends BasePO {
         if (getClass() != that.getClass()) {
             return false;
         }
-        DataSource other = (DataSource) that;
+        DataSourceEntity other = (DataSourceEntity) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getDsCode() == null ? other.getDsCode() == null : this.getDsCode().equals(other.getDsCode()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))

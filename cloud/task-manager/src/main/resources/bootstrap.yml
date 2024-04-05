@@ -1,11 +1,10 @@
 server:
   port: 9002
 
-
 spring:
-
   application:
     name: task-manager
+
   cloud:
     nacos:
       ipAddr: 10.0.0.10:8848

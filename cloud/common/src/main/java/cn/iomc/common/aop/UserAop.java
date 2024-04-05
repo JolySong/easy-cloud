@@ -1,16 +1,22 @@
 package cn.iomc.common.aop;
 
 import cn.iomc.common.constant.UserInfo;
+import cn.iomc.common.result.Result;
 import cn.iomc.common.utils.LogUtil;
 import cn.iomc.common.utils.UserInfoContext;
 import com.alibaba.fastjson.JSON;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import java.util.Arrays;
 
 /**
@@ -28,6 +34,10 @@ public class UserAop {
      */
     @Before(value = "execution(public * cn.iomc.*.controller.*.*(..))")
     public void before(JoinPoint joinPoint) {
+
+        // todo 集成权限认证再做调整
+        UserInfoContext.serUserInfo("admin", "管理员");
+
         // 类名
         String className = joinPoint.getTarget().getClass().getName();
         // 方法名
@@ -36,9 +46,11 @@ public class UserAop {
         Object[] args = joinPoint.getArgs();
         Object[] arguments = new Object[args.length];
         for(int i = 0 ; i < args.length; i++){
-//            if(args[i] instanceof ServletRequest || args[i] instanceof ServletResponse || args[i] instanceof MultipartFile){
-//                continue;
-//            }
+            if(args[i] instanceof ServletRequest
+                    || args[i] instanceof ServletResponse
+                    || args[i] instanceof MultipartFile){
+                continue;
+            }
             arguments[i] = args[i];
         }
         // 请求的参数
@@ -48,9 +60,6 @@ public class UserAop {
         try {
             // 请求的参数
             params = JSON.toJSONString(arguments);
-
-            // todo 集成权限认证再做调整
-            UserInfoContext.serUserInfo("admin", "管理员");
 
             // 获取请求的用户
             user = UserInfoContext.getUserInfo();
@@ -62,6 +71,32 @@ public class UserAop {
         LogUtil.info("用户= " + user + ", 方法路径=" + className+methodName + ", 入参类型=" + params);
     }
 
+
+    /**
+     * 异常捕获并打印日志
+     *
+     * @param joinPoint
+     * @return
+     */
+    @Around(value = "execution(public * cn.iomc.*.controller.*.*(..))")
+    public Object catchException(ProceedingJoinPoint joinPoint) {
+
+        try {
+            return joinPoint.proceed();
+        } catch (Throwable e) {
+            String className = joinPoint.getTarget().getClass().getName();
+            String methodName = joinPoint.getSignature().getName();
+            LogUtil.error("在" + className + "的" + methodName + "中，发生了异常："
+                    + e.getMessage() + Arrays.toString(e.getStackTrace()));
+            return Result.ERROR().message("服务器异常，请稍后再试");
+        }
+    }
+
+    /**
+     * 清除thread-local
+     *
+     * @param joinPoint
+     */
     @After(value = "execution(public * cn.iomc.*.controller.*.*(..))")
     public void after(JoinPoint joinPoint) {
 

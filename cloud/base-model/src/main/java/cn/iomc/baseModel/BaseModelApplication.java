@@ -14,13 +14,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@MapperScan("cn.iomc.baseModel.mapper")
+@MapperScan({"cn.iomc.common.mapper", "cn.iomc.baseModel.mapper"})
 @ComponentScan({"cn.iomc.common", "cn.iomc.baseModel"})
 @EnableTransactionManagement
 public class BaseModelApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BaseModelApplication.class, args);
-        System.out.println("baseModel starting...");
+        System.out.println("------------->>> baseModel starting...");
     }
 }

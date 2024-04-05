@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>cn.iomc.baseModel</groupId>
-    <artifactId>base-model</artifactId>
+    <artifactId>base-modelEntity</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

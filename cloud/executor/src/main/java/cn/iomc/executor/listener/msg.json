@@ -1,0 +1,32 @@
+{"@type":"cn.iomc.common.dto.ValidTaskDTO","checkField":"type","dsCode":530457199486529536,"endTime":1711555200000,"primaryField":"id","ruleType":0,"startTime":1711468800000,"totalSql":"SELECT id, type, count, create_time FROM st_sql_exe_result_count_timeline WHERE create_time >= ${start_time} AND create_time < ${end_time} "}
+{
+  "checkField":"type",
+  "dsCode":530457199486529536,
+  "endTime":1711555200000,
+  "primaryField":"id",
+  "ruleType":0,
+  "startTime":1711468800000,
+  "totalSql":"SELECT id, type, count, create_time FROM st_sql_exe_result_count_timeline WHERE create_time >= ${start_time} AND create_time < ${end_time} "
+}
+
+
+
+CREATE DATABASE  data_cloud
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_general_ci;
+
+CREATE DATABASE  data_cloud_flowable
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_general_ci;
+
+CREATE DATABASE  data_cloud_quartz
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_general_ci;
+
+CREATE DATABASE  foodmart2
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_general_ci;
+
+CREATE DATABASE  robot
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_general_ci;
